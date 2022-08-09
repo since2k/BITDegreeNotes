@@ -1,2 +1,3 @@
 # BITDegreeNotes
-Notes
+Notes accumulated from the SIT BIT Degree
+
