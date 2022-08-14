@@ -1,0 +1,1233 @@
+Ternary operators
+
+    if (who) {
+	    console.log('Gottem');
+    }
+    else {
+	    console.log('SIKE');
+    }
+
+would be:
+
+    who ? console.log('Gottem') : console.log('SIKE');
+
+__________________________________________________________________________________________________
+Switch / case switches
+
+let athleteFinalPosition = 'first place';
+
+switch (athleteFinalPosition){
+  case 'first place':
+    console.log('You get the gold medal!');
+    break;
+  case 'second place':
+    console.log('You get the silver medal!');
+    break;
+  case 'third place':
+    console.log('You get the bronze medal!');
+    break;
+  default:
+    console.log('No medal awarded.');
+    break;
+}
+
+//prints You get the gold medal!
+//default is if the
+
+__________________________________________________________________________________________________
+Parameters and Arguments
+
+function sayThanks(name) {
+  console.log('Thank you for your purchase '+ name + '! We appreciate your business.');
+}
+
+sayThanks('Cole');
+
+//prints "Thank you for your purchase Cole! We appreciate your business."
+__________________________________________________________________________________________________
+
+Setting default parameters
+
+function makeShoppingList(item1 = 'milk', item2 = 'bread', item3 = 'eggs'){
+  console.log(`Remember to buy ${item1}`);
+  console.log(`Remember to buy ${item2}`);
+  console.log(`Remember to buy ${item3}`);
+}
+makeShoppingList();
+
+//prints Remember to buy ___ items
+
+__________________________________________________________________________________________________
+Helper Functions
+
+function monitorCount(rows, columns) {
+  return rows * columns;
+}
+
+function costOfMonitors(rows, columns){
+  return monitorCount(rows, columns) * 200;
+}
+
+const totalCost = costOfMonitors(5, 4);
+
+console.log(totalCost);
+
+Function Expressions
+
+const plantNeedsWater = function(day){
+  if (day === 'Wednesday'){
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+console.log(plantNeedsWater('Tuesday'));
+
+//prints false
+
+__________________________________________________________________________________________________
+Arrow Functions
+
+const plantNeedsWater = (day) => {
+  if (day === 'Wednesday') {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+console.log(plantNeedsWater('Wednesday'));
+
+//prints true
+//faster to type than normal function expressions / alternate way of typing them
+
+__________________________________________________________________________________________________
+Concise body arrow functions
+
+const plantNeedsWater = day => day === 'Wednesday' ? true : false;
+
+
+/*{
+  return day === 'Wednesday' ? true : false;
+};*/
+
+//no print
+
+__________________________________________________________________________________________________
+Blocks and scope
+
+const city = 'New York City';
+function logCitySkyline(){
+  let skyscraper = 'Empire State Building';
+  return 'The stars over the ' + skyscraper + ' in ' + city;
+}
+console.log(logCitySkyline());
+
+//prints 'The stars over the Empire State Building in New York City
+//uses the code outside of the function / Blocks
+
+__________________________________________________________________________________________________
+Scope Pollution
+
+const satellite = 'The Moon';
+const galaxy = 'The Milky Way';
+let stars = 'North Star';
+
+const callMyNightSky = () => {
+  stars = 'Sirius';     <<== This line changes the stars variable
+	return 'Night Sky: ' + satellite + ', ' + stars + ', ' + galaxy;
+};
+
+console.log(callMyNightSky());
+console.log(stars);
+
+//You’ll notice that the global variable stars was reassigned to 'Sirius'.
+//In other words, we changed the value of the global stars variable but it’s not easy to read what exactly happened.
+//This is bad practice in code maintainability and could impact our program in ways we do not intend.
+
+__________________________________________________________________________________________________
+Practice Good Scoping
+
+Tightly scoping your variables will greatly improve your code in several ways: 
+* It will make your code more legible since the blocks will organize your code into discrete sections. 
+* It makes your code more understandable since it clarifies which variables are associated with
+    different parts of the program rather than having to keep track of them line after line!
+* It’s easier to maintain your code, since your code will be modular.
+* It will save memory in your code because it will cease to exist after the block finishes running. 
+
+
+
+const logVisibleLightWaves = () => {
+  let lightWaves = 'Moonlight';
+	let region = 'The Arctic';
+  // Add if statement here:
+  if (region === 'The Arctic'){
+    let lightWaves = 'Northern Lights';
+    console.log(lightWaves);
+  }
+  console.log(lightWaves);
+};
+
+logVisibleLightWaves();
+
+//prints Northern Lights Moonlight
+//Temporarily assigns the lightWaves variable
+
+__________________________________________________________________________________________________
+Scope Review
+
+
+*    Scope refers to where variables can be accessed throughout the program, and is determined by where and how they are declared.
+*    Blocks are statements that exist within curly braces {}.
+*    Global scope refers to the context within which variables are accessible to every part of the program.
+*    Global variables are variables that exist within global scope.
+*    Block scope refers to the context within which variables are accessible only within the block they are defined.
+*    Local variables are variables that exist within block scope.
+*    Global namespace is the space in our code that contains globally scoped information.
+*    Scope pollution is when too many variables exist in a namespace or variable names are reused.
+
+__________________________________________________________________________________________________
+Printing array variable
+
+let groceryList = ['bread', 'tomatoes', 'milk'];
+
+groceryList[1] = 'avocados';
+console.log(groceryList[1]);
+
+//prints avocados
+
+__________________________________________________________________________________________________
+Arrays with let and const
+
+* You may recall that you can declare variables with both the let and const keywords. Variables declared with let can be reassigned.
+* Variables declared with the const keyword cannot be reassigned. However, elements in an array declared with const remain mutable.
+* Meaning that we can change the contents of a const array, but cannot reassign a new array or a different value.
+
+let condiments = ['Ketchup', 'Mustard', 'Soy Sauce', 'Sriracha'];
+condiments[0] = 'Mayo';
+condiments = ['Mayo'];
+console.log(condiments);
+
+const utensils = ['Fork', 'Knife', 'Chopsticks', 'Spork'];
+utensils[3] = 'Spoon';
+console.log(utensils[3]);
+
+//prints [ 'Mayo' ] Spoon
+//Reassigning an entire array with 'let'
+//changing const array element
+
+__________________________________________________________________________________________________
+The .push() Method
+
+* .push() allows us to add items to the end of an array.
+
+const chores = ['wash dishes', 'do laundry', 'take out trash'];
+chores.push('brush teeth', 'shoot someone');
+
+console.log(chores);
+
+//prints
+[ 'wash dishes',
+  'do laundry',
+  'take out trash',
+  'brush teeth',
+  'shoot someone' ]
+
+__________________________________________________________________________________________________
+The .pop() Method
+
+* .pop(), removes the last item of an array. 
+
+const chores = ['wash dishes', 'do laundry', 'take out trash', 'cook dinner', 'mop floor'];
+
+chores.pop();
+console.log(chores);
+
+//prints [ 'wash dishes', 'do laundry', 'take out trash', 'cook dinner' ]
+
+__________________________________________________________________________________________________
+More Array Methods
+
+* Some arrays methods that are available to JavaScript developers include: .join(), .slice(), .splice(), .shift(), .unshift(), and .concat() amongst many others.
+
+const groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+
+groceryList.shift(); //removes first element
+//console.log(groceryList);
+
+groceryList.unshift('popcorn');
+//console.log(groceryList);
+
+//console.log(groceryList.slice(1, 4)); //prints 3 elements
+// [ 'bananas', 'coffee beans', 'brown rice' ]
+//doesnt mutate array like others
+
+//console.log(groceryList);
+
+const pastaIndex = groceryList.indexOf('pasta');
+console.log(pastaIndex);
+
+__________________________________________________________________________________________________
+Arrays and Functions
+
+const concept = ['arrays', 'can', 'be', 'mutated'];
+
+function changeArr(arr){
+  arr[3] = 'MUTATED';
+}
+
+changeArr(concept); //mutates array index 3 to MUTATED
+
+//console.log(concept);
+
+function removeElement(newArr){ //newArr
+  newArr.pop();
+}
+
+removeElement(concept); //removes last arr member
+
+console.log(concept);
+
+//prints
+[ 'arrays', 'can', 'be' ]
+
+__________________________________________________________________________________________________
+Nested Arrays
+
+When an array contains another array it is known as a nested array. Examine the example below: 
+
+const nestedArr = [[1], [2, 3]];
+ 
+console.log(nestedArr[1]); // Output: [2, 3]
+console.log(nestedArr[1][0]); // Output: 2, Grabs the first index within the array called
+
+-----------------------------------------
+
+const numberClusters = [[1, 2], [3, 4], [5, 6]];
+const target = numberClusters[2][1];
+
+console.log(target); //Outputs 6
+
+__________________________________________________________________________________________________
+Array Review
+
+
+*    Arrays are lists that store data in JavaScript.
+*    Arrays are created with brackets [].
+*    Each item inside of an array is at a numbered position, or index, starting at 0.
+*    We can access one item in an array using its index, with syntax like: myArray[0].
+*    We can also change an item in an array using its index, with syntax like myArray[0] = 'new string';
+*    Arrays have a length property, which allows you to see how many items are in an array.
+*    Arrays have their own methods, including .push() and .pop(), which add and remove items from an array, respectively.
+*    Arrays have many methods that perform different tasks, such as .slice() and .shift(), you can find documentation at the Mozilla Developer Network website.
+*    Some built-in methods are mutating, meaning the method will change the array, while others are not mutating. You can always check the documentation.
+*    Variables that contain arrays can be declared with let or const. Even when declared with const, arrays are still mutable. However, a variable declared with const cannot be reassigned.
+*    Arrays mutated inside of a function will keep that change even outside the function.
+*    Arrays can be nested inside other arrays.
+*    To access elements in nested arrays chain indices using bracket notation.
+
+__________________________________________________________________________________________________
+The For Loop
+
+Printing 5 > 10
+
+for (let i = 5; i < 11; i++){
+  console.log(i);
+}
+
+//prints
+5
+6
+7
+8
+9
+10
+
+Printing 3 > 0 (reversed for Loop)
+
+for (let counter = 3; counter >= 0; counter--){
+  console.log(counter);
+}
+
+Printing array elements with for loops
+
+const vacationSpots = ['Bali', 'Paris', 'Tulum'];
+
+for (let i = 0; i < vacationSpots.length; i++){
+  console.log(`I would love to visit ${vacationSpots[i]}`);
+}
+
+//prints
+I would love to visit Bali
+I would love to visit Paris
+I would love to visit Tulum
+
+__________________________________________________________________________________________________
+Nested loops
+
+const bobsFollowers = ['Matt', 'Sam', 'Ben', 'Googalagamagana'];
+const tinasFollowers = ['Matt', 'Zac', 'Googalagamagana'];
+const mutualFollowers = [];
+
+for (let i = 0; i < bobsFollowers.length; i++){
+  for (let j = 0; j < tinasFollowers.length; j++){
+    if (tinasFollowers[j] == bobsFollowers[i]){
+      mutualFollowers.push(tinasFollowers[j]);
+    }
+  }
+}
+
+console.log(mutualFollowers);
+
+//prints [ 'Matt', 'Googalagamagana' ]
+
+__________________________________________________________________________________________________
+While loop
+
+const cards = ['diamond', 'spade', 'heart', 'club'];
+
+let currentCard;
+
+while (currentCard !== 'spade'){
+  currentCard = cards[Math.floor(Math.random() * 4)];
+  console.log(currentCard);
+}
+
+//printed
+heart
+heart
+club
+club
+diamond
+heart
+spade
+
+__________________________________________________________________________________________________
+Do while
+
+const cupsOfSugarNeeded = 5;
+var cupsAdded = 0;
+
+do {
+  cupsAdded++;
+  //console.log(cupsAdded); prints 1-5
+}
+while(cupsAdded < cupsOfSugarNeeded){
+  console.log(cupsAdded); //prints 5
+}
+
+__________________________________________________________________________________________________
+Breaks
+
+const rapperArray = ["Lil' Kim", "Jay-Z", "Notorious B.I.G.", "Tupac"];
+
+for (let i = 0; i < rapperArray.length; i++){
+  console.log(rapperArray[i]);
+  if (rapperArray[i] === 'Notorious B.I.G.'){
+    break;
+  }
+}
+console.log("And if you don't know, now you know.");
+//^^ Using " marks, the \ before ' is unneccesary
+
+__________________________________________________________________________________________________
+Loops Review
+
+
+*    Loops perform repetitive actions so we don’t have to code that process manually every time.
+*    How to write for loops with an iterator variable that increments or decrements
+*    How to use a for loop to iterate through an array
+*    A nested for loop is a loop inside another loop
+*    while loops allow for different types of stopping conditions
+*    Stopping conditions are crucial for avoiding infinite loops.
+*    do...while loops run code at least once— only checking the stopping condition after the first execution
+*    The break keyword allows programs to leave a loop during the execution of its block
+
+__________________________________________________________________________________________________
+Functions as Data
+
+const checkThatTwoPlusTwoEqualsFourAMillionTimes = () => {
+  for(let i = 1; i <= 1000000; i++) {
+    if ( (2 + 2) != 4) {
+      console.log('Something has gone very wrong :( ');
+    }
+  }
+};
+//Functioning data
+const isTwoPlusTwo = checkThatTwoPlusTwoEqualsFourAMillionTimes;
+
+isTwoPlusTwo();
+
+console.log(isTwoPlusTwo.name);
+//returns property of the function we assigned 
+
+__________________________________________________________________________________________________
+Functions as Parameters
+
+const addTwo = num => {
+  return num + 2;
+}
+
+const checkConsistentOutput = (func, val) => {
+  const checkA = val + 2;
+  const checkB = func(val); //invokes func and passes val
+  if (checkA === checkB){
+    return func(val);//returns callback function
+    //which is the argument function passed in checkConsistentOutput
+  }
+  else {
+    return 'inconsistent results';
+  }
+}
+
+console.log(checkConsistentOutput(addTwo, 5)); //recieves call back
+
+//returns 7
+
+__________________________________________________________________________________________________
+Higher Order Functions Review
+
+*    Abstraction allows us to write complicated code in a way that’s easy to reuse, debug, and understand for human readers.
+*    We can work with functions the same way we work with any other type of data, including reassigning them to new variables.
+*    JavaScript functions are first-class objects, so they have properties and methods like any other object.
+*    Functions can be passed into other functions as parameters.
+*    A higher-order function is a function that either accepts functions as parameters, returns a function, or both.
+
+__________________________________________________________________________________________________
+Iterators
+The .forEach() Method
+
+Method 1 -
+const fruits = ['mango', 'papaya', 'pineapple', 'apple'];
+// Iterates over fruits below
+fruits.forEach(fruits => console.log('I want to eat a ' + fruits));
+
+Method 2 -
+
+const fruits = ['mango', 'papaya', 'pineapple', 'apple'];
+// Iterate over fruits below
+fruits.forEach(function(fruits) {
+  console.log('I want to eat a ' + fruits)
+});
+
+//prints
+I want to eat a mango
+I want to eat a papaya
+I want to eat a pineapple
+I want to eat a apple
+
+__________________________________________________________________________________________________
+The .map() Method
+
+const animals = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus', 'rabbit', 'lion', 'dog'];
+
+// Create the secretMessage array below
+const secretMessage = animals.map(animal => animal[0]);
+
+console.log(secretMessage.join(''));
+
+const bigNumbers = [100, 200, 300, 400, 500];
+
+// Create the smallNumbers array below
+const smallNumbers = bigNumbers.map(num => num/100);
+
+console.log(smallNumbers)
+
+//prints
+HelloWorld
+[ 1, 2, 3, 4, 5 ]
+
+__________________________________________________________________________________________________
+The .filter() Method
+
+const randomNumbers = [375, 200, 3.14, 7, 13, 852];
+
+// Call .filter() on randomNumbers below
+const smallNumbers = randomNumbers.filter(num => {
+  if (num < 250){
+    return num; //returns num if less than 250
+  }
+})
+
+const favoriteWords = ['nostalgia', 'hyperbole', 'fervent', 'esoteric', 'serene'];
+
+// Call .filter() on favoriteWords below
+const longFavoriteWords = favoriteWords.filter(word => {
+  if (word.length > 7){
+    return word; //returns words with more than 7 chars
+  }
+})
+
+//prints
+[ 200, 3.14, 7, 13 ]
+[ 'nostalgia', 'hyperbole', 'esoteric' ]
+
+__________________________________________________________________________________________________
+The .findIndex() Method
+
+const animals = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+
+const foundAnimal = animals.findIndex(animal => {
+  if (animal === 'elephant'){
+    return animal; //returns index of elephant
+  }
+})
+
+const startsWithS = animals.findIndex(animal => {
+  if (animal[0] === 's'){
+    return animal; //returns index of 's' occurances
+  }
+})
+
+console.log(foundAnimal);
+console.log(startsWithS);
+
+//prints
+7
+3
+
+__________________________________________________________________________________________________
+The .reduce() Method
+
+* The .reduce() method returns a single value after iterating through the elements of an array, thereby reducing the array. 
+
+Example: 
+
+const numbers = [1, 2, 4, 10];
+ 
+const summedNums = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue
+})
+ 
+console.log(summedNums) // Output: 17
+
+Iteration 	accumulator 	currentValue 	return value
+First 	        1 	            2 	            3
+Second 	        3 	            4 	            7
+Third 	        7 	            10 	            17
+
+const newNumbers = [1, 3, 5, 7];
+
+const newSum = newNumbers.reduce((accumulator, currentValue) => {
+  console.log('The value of accumulator: ', accumulator);
+  console.log('The value of currentValue: ', currentValue);
+  return accumulator + currentValue;
+}, 10) //<second argument
+      // increases final accumulator by 10
+
+console.log(newSum);
+
+//prints
+The value of accumulator:  10
+The value of currentValue:  1
+The value of accumulator:  11
+The value of currentValue:  3
+The value of accumulator:  14
+The value of currentValue:  5
+The value of accumulator:  19
+The value of currentValue:  7
+26
+
+__________________________________________________________________________________________________
+Iterator Documentation
+
+* There are many additional built-in array methods, a complete list of which is on the MDN’s Array iteration methods page.
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods
+
+const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
+
+// Something is missing in the method call below
+
+console.log(words.some((word) => {
+  return word.length < 6; //returns if string less than 6
+}));
+
+// Use filter to create a new array
+
+const interestingWords = words.filter(word => {
+    return word.length > 5;
+});
+console.log(interestingWords);
+
+console.log(interestingWords.every((word) => { 
+  return word.length > 5;
+} ));
+
+//prints
+true
+[ 'unique', 'uncanny', 'oxymoron' ]
+true
+
+__________________________________________________________________________________________________
+Choose the Right Iterator
+
+1. Replace the word method in the first method call with a method that will do something to each of the values in the array and return undefined.
+    - forEach
+2. In the second method call, replace the word method with a method that will return a new array with only those elements longer than 7 characters.
+    - filter
+3. In the third method call, replace the word method with a method that accepts an array containing multiple values and returns a single value.
+    - reduce
+4. In the fourth method call, replace the word method with a method that will return a new array of numbers returned from the function.
+    - map
+5. In the fifth method call, replace the word method with a method that will return a boolean value.
+    - every
+
+const cities = ['Orlando', 'Dubai', 'Edinburgh', 'Chennai', 'Accra', 'Denver', 'Eskisehir', 'Medellin', 'Yokohama'];
+const nums = [1, 50, 75, 200, 350, 525, 1000];
+
+//  Choose a method that will return undefined
+cities.forEach(city => console.log('Have you visited ' + city + '?'));
+
+// Choose a method that will return a new array
+const longCities = cities.filter(city => city.length > 7);
+
+// Choose a method that will return a single value
+const word = cities.reduce((acc, currVal) => {
+  return acc + currVal[0]
+}, "C");
+
+console.log(word)
+
+// Choose a method that will return a new array
+const smallerNums = nums.map(num => num - 5);
+
+// Choose a method that will return a boolean value
+nums.every(num => num < 0);
+
+//prints
+Have you visited Orlando?
+Have you visited Dubai?
+Have you visited Edinburgh?
+Have you visited Chennai?
+Have you visited Accra?
+Have you visited Denver?
+Have you visited Eskisehir?
+Have you visited Medellin?
+Have you visited Yokohama?
+CODECADEMY
+
+__________________________________________________________________________________________________
+Iterators Review
+
+*    .forEach() is used to execute the same code on every element in an array but does not change the array and returns undefined.
+*    .map() executes the same code on every element in an array and returns a new array with the updated elements.
+*    .filter() checks every element in an array to see if it meets certain criteria and returns a new array with the elements that return truthy for the criteria.
+*    .findIndex() returns the index of the first element of an array that satisfies a condition in the callback function. It returns -1 if none of the elements in the array satisfies the condition.
+*    .reduce() iterates through an array and takes the values of the elements and returns a single value.
+*    All iterator methods take a callback function, which can be a pre-defined function, a function expression, or an arrow function.
+*    You can visit the Mozilla Developer Network to learn more about iterator methods (and all other parts of JavaScript!).
+
+__________________________________________________________________________________________________
+Creating Object Literals
+
+// Write your fasterShip object literal below
+let fasterShip = {
+  'Fuel Type': 'Turbo Fuel',
+  color: 'silver'
+}
+
+console.log(fasterShip);
+
+//prints { 'Fuel Type': 'Turbo Fuel', color: 'silver' }
+
+__________________________________________________________________________________________________
+Accessing Properties
+
+spaceship.color;
+
+spaceship = object
+. = dot operator
+color = property name
+
+let spaceship = {
+  homePlanet: 'Earth',
+  color: 'silver',
+  'Fuel Type': 'Turbo Fuel',
+  numCrew: 5,
+  flightPath: ['Venus', 'Mars', 'Saturn']
+};
+// Write your code below
+const crewCount = spaceship.numCrew;
+const planetArray = spaceship.flightPath;
+
+console.log(crewCount);
+console.log(planetArray);
+
+//prints
+5
+[ 'Venus', 'Mars', 'Saturn' ]
+
+__________________________________________________________________________________________________
+Bracket Notation
+
+let spaceship = {
+  'Fuel Type' : 'Turbo Fuel',
+  'Active Mission' : true,
+  homePlanet : 'Earth', 
+  numCrew: 5
+ };
+
+let propName =  'Active Mission';
+
+// Write your code below
+const isActive = spaceship['Active Mission'];
+console.log(spaceship[propName]);
+
+//prints true
+
+__________________________________________________________________________________________________
+Property Assignment
+
+let spaceship = {
+  'Fuel Type' : 'Turbo Fuel',
+  homePlanet : 'Earth',
+  color: 'silver',
+  'Secret Mission' : 'Discover life outside of Earth.'
+};
+
+// Write your code below
+spaceship.color = 'glorious gold';
+spaceship['numEngines'] = 5;
+delete spaceship['Secret Mission'];
+
+//prints
+{ 'Fuel Type': 'Turbo Fuel',
+  homePlanet: 'Earth',
+  color: 'glorious gold',
+  numEngines: 5 }
+
+__________________________________________________________________________________________________
+Methods
+
+let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';
+
+const alienShip = {
+  retreat() {
+    console.log('We no longer wish to conquer your planet. It is full of dogs, which we do not care for.');
+  },
+  takeOff() {
+    console.log('Spim... Borp... Glix... Blastoff!');
+  }
+}
+
+alienShip.retreat();
+alienShip.takeOff();
+
+//prints
+We no longer wish to conquer your planet. It is full of dogs, which we do not care for.
+Spim... Borp... Glix... Blastoff!
+
+__________________________________________________________________________________________________
+Nested Objects
+
+let spaceship = {
+  passengers: null,
+  telescope: {
+    yearBuilt: 2018,
+    model: "91031-XLT",
+    focalLength: 2032 
+  },
+  crew: {
+    captain: { 
+      name: 'Sandra', 
+      degree: 'Computer Engineering', 
+      encourageTeam() { console.log('We got this!') },
+     'favorite foods': ['cookies', 'cakes', 'candy', 'spinach'] }
+  },
+  engine: {
+    model: "Nimbus2000"
+  },
+  nanoelectronics: {
+    computer: {
+      terabytes: 100,
+      monitors: "HD"
+    },
+    'back-up': {
+      battery: "Lithium",
+      terabytes: 50
+    }
+  }
+}; 
+//modifying passengers, not directly editing it
+spaceship.passengers = [{0:'Space Monke'}, {1:'Space Pupper'}];
+const capFave = spaceship.crew.captain['favorite foods'][0];
+const firstPassenger = spaceship.passengers[0];//returns first index
+
+
+//returns
+{ passengers: [ { '0': 'Space Monke' }, { '1': 'Space Pupper' } ],
+  telescope: { yearBuilt: 2018, model: '91031-XLT', focalLength: 2032 },
+  crew: 
+   { captain: 
+      { name: 'Sandra',
+        degree: 'Computer Engineering',
+        encourageTeam: [Function: encourageTeam],
+        'favorite foods': [Object] } },
+  engine: { model: 'Nimbus2000' },
+  nanoelectronics: 
+   { computer: { terabytes: 100, monitors: 'HD' },
+     'back-up': { battery: 'Lithium', terabytes: 50 } } }
+cookies
+{ '0': 'Space Monke' }
+console.log(spaceship);
+console.log(capFave);
+console.log(firstPassenger);
+
+__________________________________________________________________________________________________
+Pass By Reference
+
+* Objects are passed by reference
+
+let spaceship = {
+  'Fuel Type' : 'Turbo Fuel',
+  homePlanet : 'Earth'
+};
+
+let greenEnergy = (obj) => {
+  obj['Fuel Type'] = 'avocado oil';
+}
+
+let remotelyDisable = (obj) => {
+  obj['disabled'] = true;
+}
+
+greenEnergy(spaceship);
+remotelyDisable(spaceship);
+console.log(spaceship);
+
+//prints
+{ 'Fuel Type': 'avocado oil',
+  homePlanet: 'Earth',
+  disabled: true }
+
+__________________________________________________________________________________________________
+Looping Through Objects
+
+* for...in will execute a given block of code for each property in an object.
+
+let spaceship = {
+    crew: {
+    captain: { 
+        name: 'Lily', 
+        degree: 'Computer Engineering', 
+        cheerTeam() { console.log('You got this!') } 
+        },
+    'chief officer': { 
+        name: 'Dan', 
+        degree: 'Aerospace Engineering', 
+        agree() { console.log('I agree, captain!') } 
+        },
+    medic: { 
+        name: 'Clementine', 
+        degree: 'Physics', 
+        announce() { console.log(`Jets on!`) } },
+    translator: {
+        name: 'Shauna', 
+        degree: 'Conservation Science', 
+        powerFuel() { console.log('The tank is full!') } 
+        }
+    }
+}; 
+
+for (let member in spaceship.crew){
+  //prints all crew roles + names
+  console.log(`${member}: ${spaceship.crew[member].name}`);
+}
+console.log();
+for (let member in spaceship.crew){
+  //
+  console.log(`${spaceship.crew[member].name}: ${spaceship.crew[member].degree}`);
+}
+
+//prints
+captain: Lily
+chief officer: Dan
+medic: Clementine
+translator: Shauna
+
+Lily: Computer Engineering
+Dan: Aerospace Engineering
+Clementine: Physics
+Shauna: Conservation Science
+
+__________________________________________________________________________________________________
+Objects Review
+
+
+*  Objects store collections of key-value pairs.
+*  Each key-value pair is a property—when a property is a function it is known as a method.
+*  An object literal is composed of comma-separated key-value pairs surrounded by curly braces.
+*  You can access, add or edit a property within an object by using dot notation or bracket notation.
+*  We can add methods to our object literals using key-value syntax with anonymous function expressions as values or by using the new ES6 method syntax.
+*  We can navigate complex, nested objects by chaining operators.
+*  Objects are mutable—we can change their properties even when they’re declared with const.
+*  Objects are passed by reference— when we make changes to an object passed into a function, those changes are permanent.
+*  We can iterate through objects using the For...in syntax.
+
+__________________________________________________________________________________________________
+The this Keyword
+
+* The this keyword references the calling object which provides access to the calling object’s properties. 
+
+const robot = {
+  model: '1E78V2', //doesnt use = for objs
+  energyLevel: 100,
+  provideInfo() {
+    return `I am ${this.model} and my current energy level is ${this.energyLevel}.`
+  }
+};
+
+console.log(robot.provideInfo());
+
+//prints
+I am 1E78V2 and my current energy level is 100.
+
+__________________________________________________________________________________________________
+Arrow Functions and this
+
+* Arrow functions inherently bind, or tie, an already defined this value to the function itself that is NOT the calling object
+
+Example of shorthand format
+
+const robot = {
+  energyLevel: 100,
+  checkEnergy() {
+    console.log(`Energy is currently at ${this.energyLevel}%.`)
+  }
+}
+
+robot.checkEnergy();
+
+Example of longhand format
+
+const robot = {
+  energyLevel: 100,
+  checkEnergy: function() {
+    console.log(`Energy is currently at ${this.energyLevel}%.`)
+  }
+}
+
+robot.checkEnergy();
+
+//prints
+Energy is currently at 100%.
+
+__________________________________________________________________________________________________
+Privacy
+
+* Certain languages have privacy built-in for objects, but JavaScript does not have this feature.
+    Rather, JavaScript developers follow naming conventions that signal to other developers how to interact with a property.
+    One common convention is to place an underscore _ before the name of a property to mean that the property should not be altered. 
+
+const robot = {
+  _energyLevel: 100,
+  recharge(){
+    this._energyLevel += 30;
+    console.log(`Recharged! Energy is currently at ${this._energyLevel}%.`)
+  }
+};
+
+robot._energyLevel = 'high';
+console.log(robot.recharge());
+
+//prints
+Recharged! Energy is currently at high30%.
+undefined
+
+__________________________________________________________________________________________________
+Getters
+
+*  Getters are methods that get and return the internal properties of an object. But they can do more than just retrieve the value of a property! 
+*    Getters can perform an action on the data when getting a property.
+*    Getters can return different values using conditionals.
+*    In a getter, we can access the properties of the calling object using [this].
+*    The functionality of our code is easier for other developers to understand.
+
+const robot = {
+  _model: '1E78V2',
+  _energyLevel: 100,
+  get energyLevel(){
+    if (typeof this._energyLevel == 'number'){
+      return `My current energy level is ${this._energyLevel}`
+    }
+    else {
+      return 'System malfunction: cannot retrieve energy level'
+    }
+  }
+};
+
+console.log(robot.energyLevel);
+
+//prints
+My current energy level is 100
+
+__________________________________________________________________________________________________
+Setters
+
+* Along with getter methods, we can also create setter methods which reassign values of existing properties within an object. 
+
+const robot = {
+  _model: '1E78V2',
+  _energyLevel: 100,
+  _numOfSensors: 15,
+  get numOfSensors(){
+    if(typeof this._numOfSensors === 'number'){
+      return this._numOfSensors;
+    } else {
+      return 'Sensors are currently down.'
+    }
+  },
+  set numOfSensors(num){
+    if (typeof num === 'number' && num >= 0){
+      this._numOfSensors = num;
+    }
+    else {
+      console.log('Pass in a number that is greater than or equal to 0');
+    }
+  }
+};
+
+robot.numOfSensors = 100; //using set method
+console.log(robot.numOfSensors);
+
+//prints
+100
+
+__________________________________________________________________________________________________
+Factory Functions
+
+* So far we’ve been creating objects individually, but there are times where we want to create many instances of an object quickly. 
+* Here’s where factory functions come in. A real world factory manufactures multiple copies of an item quickly and on a massive scale.
+
+const robotFactory = (model, mobile) => {
+  return {
+    model: model,
+    mobile: mobile,
+    beep(){
+      console.log('Beep Boop');
+    }
+  }
+}
+
+const tinCan = robotFactory('P-500', true);
+tinCan.beep();
+
+//prints
+Beep Boop
+
+__________________________________________________________________________________________________
+Property Value Shorthand
+
+function robotFactory(model, mobile){
+  return {
+    model,
+    mobile,
+    beep() {
+      console.log('Beep Boop');
+    }
+  }
+}
+
+// To check that the property value shorthand technique worked:
+const newRobot = robotFactory('P-501', false)
+console.log(newRobot.model)
+console.log(newRobot.mobile)
+
+//prints
+
+__________________________________________________________________________________________________
+Destructured Assignment
+
+* we can also take advantage of a destructuring technique called destructured assignment to save ourselves some keystrokes.
+* In destructured assignment we create a variable with the name of an object’s key that is wrapped in curly braces { } and assign to it the object.
+
+const robot = {
+  model: '1E78V2',
+  energyLevel: 100,
+  functionality: {
+    beep() {
+      console.log('Beep Boop');
+    },
+    fireLaser() {
+      console.log('Pew Pew');
+    },
+  }
+};
+//sub for const functionality = robot.functionality;
+const { functionality } = robot;
+functionality.beep();
+
+//prints
+Beep Boop
+
+__________________________________________________________________________________________________
+Built-in Object Methods
+
+* We can also take advantage of built-in methods for Objects
+  * Practice your documentation reading skills and check out: MDN’s object instance documentation
+    * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods
+  * There are also useful Object class methods such as Object.assign(), Object.entries(), and Object.keys() just to name a few.
+  * For a comprehensive list, browse: MDN’s object instance documentation
+    * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods_of_the_Object_constructor
+
+const robot = {
+	model: 'SAL-1000',
+  mobile: true,
+  sentient: false,
+  armor: 'Steel-plated',
+  energyLevel: 75
+};
+
+const robotKeys = Object.keys(robot); //(robot)
+console.log(robotKeys);
+
+const robotEntries = Object.entries(robot); //Object.entries(robot)
+console.log(robotEntries);
+
+const newRobot = Object.assign({laserBlaster: true, voiceRecognition: true});
+//{laserBlaster: true, voiceRecognition: true}
+
+console.log(newRobot);
+
+//prints
+[ 'model', 'mobile', 'sentient', 'armor', 'energyLevel' ]
+[ [ 'model', 'SAL-1000' ],
+  [ 'mobile', true ],
+  [ 'sentient', false ],
+  [ 'armor', 'Steel-plated' ],
+  [ 'energyLevel', 75 ] ]
+{ laserBlaster: true, voiceRecognition: true }
+
+__________________________________________________________________________________________________
+Printing object entries (Dictionaries)
+
+const object1 = {
+  a: 'somestring',
+  b: 42
+};
+
+for (const [key, value] of Object.entries(object1)) {
+  console.log(`${key}: ${value}`);
+}
+
+// expected output:
+// "a: somestring"
+// "b: 42"
+
+__________________________________________________________________________________________________
+Advanced Objects Review
+
+
+*    The object that a method belongs to is called the calling object.
+*    The this keyword refers to the calling object and can be used to access properties of the calling object.
+*    Methods do not automatically have access to other internal properties of the calling object.
+*    The value of this depends on where the this is being accessed from.
+*    We cannot use arrow functions as methods if we want to access other internal properties.
+*    JavaScript objects do not have built-in privacy, rather there are conventions to follow to notify other developers about the intent of the code.
+*    The usage of an underscore before a property name means that the original developer did not intend for that property to be directly changed.
+*    Setters and getter methods allow for more detailed ways of accessing and assigning properties.
+*    Factory functions allow us to create object instances quickly and repeatedly.
+*    There are different ways to use object destructuring: one way is the property value shorthand and another is destructured assignment.
+*    As with any concept, it is a good skill to learn how to use the documentation with objects!

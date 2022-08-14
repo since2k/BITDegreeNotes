@@ -1,0 +1,404 @@
+HTML notes
+
+*   The <em> tag will generally render as italic emphasis.
+
+*   The <strong> will generally render as bold emphasis.
+
+*   The <br> will line break.
+
+*   The <ul> should not hold raw text and won’t automatically format raw text into an unordered list of items.
+
+*   Individual list items must be added to the unordered list using the <li> tag.
+        The <li> or list item tag is used to describe an item in a list.
+
+*   Ordered lists (<ol>) are like unordered lists, except that each list item is numbered.
+        They are useful when you need to list different steps in a process or rank items for first to last.
+
+*   The <img> tag allows you to add an image to a web page. Most elements require both opening and closing tags, but the <img> tag is a self-closing tag.
+        The <img> tag has a required attribute called src. The src attribute must be set to the image’s source, or the location of the image.
+        Note that the end of the <img> tag has a forward slash /. Self-closing tags may include or omit the final slash — both will render properly. 
+            <img src="image-location.jpg" />
+
+*   The alt attribute, which means alternative text, brings meaning to the images on our sites.
+        The alt attribute can be added to the image tag just like the src attribute.
+        The alt attribute also plays a role in Search Engine Optimization (SEO), because search engines cannot “see” the images on websites as they crawl the internet.
+            Having descriptive alt attributes can improve the ranking of your site.
+                <img alt="Bear" src="https://content.codecademy.com/courses/web-101/web101-image_brownbear.jpg"/>
+
+*   HTML also supports displaying videos. Like the <img> element, the <video> element requires a src attribute with a link to the video source.
+        Unlike the <img> element however, the <video> element requires an opening and a closing tag.
+        Be sure to create a closing tag as well with </video>
+
+__________________________________________________________________________________________________
+Introduction to HTML Review
+
+
+*    HTML stands for HyperText Markup Language and is used to create the structure and content of a webpage.
+*    Most HTML elements contain opening and closing tags with raw text or other HTML tags between them.
+*    HTML elements can be nested inside other elements. The enclosed element is the child of the enclosing parent element.
+*    Any visible content should be placed within the opening and closing <body> tags.
+*    Headings and sub-headings, <h1> to <h6> tags, are used to provide titles for sections of content.
+*    <p>, <span> and <div> tags specify text or blocks.
+*    The <em> and <strong> tags are used to emphasize text.
+*    Line breaks are created with the <br> tag.
+*    Ordered lists (<ol>) are numbered and unordered lists (<ul>) are bulleted.
+*    Images (<img>) and videos (<video>) can be added by linking to an existing source.
+
+__________________________________________________________________________________________________
+
+*   The <!DOCTYPE html> declaration provides the browser with two pieces of information (the type of document and the HTML version to expect)
+*   To create HTML structure and content, we must add opening and closing <html> tags after declaring <!DOCTYPE html>
+*   Now, let’s also give the browser some information about the page itself. We can do this by adding a <head> element.
+        Remember the <body> tag? The <head> element is part of this HTML metaphor. It goes above our <body> element.
+*   A browser’s tab displays the title specified in the <title> tag. The <title> tag is always inside of the <head>.
+*   You can add links to a web page by adding an anchor element <a> and including the text of the link in between the opening and closing tags
+        <a href="https://en.wikipedia.org/wiki/Brown_bear">Learn More</a>
+    The target attribute specifies how a link should open.
+        <a href="https://en.wikipedia.org/wiki/Brown_bear" target="_blank">Learn More</a>
+            Linking a url to an image using <a> wrap, opening in new window
+            <a target="_blank" href="https://en.wikipedia.org/wiki/Brown_bear">
+                <img src="https://content.codecademy.com/courses/web-101/web101-image_brownbear.jpg"/>
+            </a>
+*   In order to link to a target on the same page, we must give the target an id
+    <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#habitat">Habitat</a></li>
+        <li><a href="#media">Media</a></li>
+    </ul>
+*   <!-- --> To comment
+
+Demo code demostrating Most
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Brown Bears</title>
+</head>
+
+<body>
+  <a href="./index.html">Brown Bear</a>
+  <a href="./aboutme.html">About Me</a>
+  <h1>The Brown Bear</h1>
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#habitat">Habitat</a></li>
+    <li><a href="#media">Media</a></li>
+  </ul>
+  <div id="introduction">
+    <h2>About Brown Bears</h2>
+    <p>The brown bear (<em>Ursus arctos</em>) is native to parts of northern Eurasia and North America. Its conservation status is currently <strong>Least Concern</strong>.<br /><br /> There are many subspecies within the brown bear species, including the
+      Atlas bear and the Himalayan brown bear.</p>
+    <a href="https://en.wikipedia.org/wiki/Brown_bear" target="_blank">Learn More</a>
+    <h3>Species</h3>
+    <ul>
+      <li>Arctos</li>
+      <li>Collarus</li>
+      <li>Horribilis</li>
+      <li>Nelsoni (extinct)</li>
+    </ul>
+    <h3>Features</h3>
+    <p>Brown bears are not always completely brown. Some can be reddish or yellowish. They have very large, curved claws and huge paws. Male brown bears are often 30% larger than female brown bears. They can range from 5 feet to 9 feet from head to toe.</p>
+  </div>
+  <div id="habitat">
+    <h2>Habitat</h2>
+    <h3>Countries with Large Brown Bear Populations</h3>
+    <ol>
+      <li>Russia</li>
+      <li>United States</li>
+      <li>Canada</li>
+    </ol>
+    <h3>Countries with Small Brown Bear Populations</h3>
+    <p>Some countries with smaller brown bear populations include Armenia, Belarus, Bulgaria, China, Finland, France, Greece, India, Japan, Nepal, Poland, Romania, Slovenia, Turkmenistan, and Uzbekistan.</p>
+  </div>
+  <div id="media">
+    <h2>Media</h2>
+    <a href="https://en.wikipedia.org/wiki/Brown_bear" target="_blank"><img src="https://content.codecademy.com/courses/web-101/web101-image_brownbear.jpg"/></a>
+    <video src="https://content.codecademy.com/courses/freelance-1/unit-1/lesson-2/htmlcss1-vid_brown-bear.mp4" height="240" width="320" controls>Video not supported</video>
+  </div>
+</body>
+
+</html>
+
+__________________________________________________________________________________________________
+
+*   The <table> element will contain all of the tabular data we plan on displaying
+
+    <table>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+    </table>
+
+*   You can add data using the table data element: <td>
+
+    <table>
+        <tr>
+            <td>73</td>
+            <td>81</td>
+        </tr>
+    </table>
+
+*   You can use the table heading element: <th>.
+
+    <table>
+        <tr>
+            <th></th>
+            <th scope="col">Saturday</th>
+            <th scope="col">Sunday</th>
+        </tr>
+        <tr>
+            <th scope="row">Temperature</th>
+            <td>73</td>
+            <td>81</td>
+        </tr>
+    </table>
+
+*   row - this value makes it clear that the heading is for a row.
+*   col - this value makes it clear that the heading is for a column.
+
+    <table>
+        <tr>
+            <th scope="col">Company Name</th>
+            <th scope="col">Number of Items to Ship</th>
+            <th scope="col">Next Action</th>
+        </tr>
+        <tr>
+            <td>Adam’s Greenworks</td>
+            <td>14</td>
+            <td>Package Items</td>
+        </tr>
+    </table>
+
+*   In older versions of HTML, a border could be added to a table using
+        the border attribute and setting it equal to an integer.
+    This integer would represent the thickness of the border.
+
+    <table border="1">
+        <tr>
+            <td>73</td>
+            <td>81</td>
+        </tr>
+    </table>
+
+*   Data can span columns using the colspan attribute.
+    The attribute accepts an integer (greater than or equal to 1) to denote the number of columns it spans across.
+
+    <table>
+        <tr>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+        </tr>
+        <tr>
+            <td colspan="2">Out of Town</td>
+            <td>Back in Town</td>
+        </tr>
+    </table>
+
+*   The rowspan attribute is used for data that spans multiple rows (perhaps an event goes on for multiple hours on a certain day).
+    It accepts an integer (greater than or equal to 1) to denote the number of rows it spans across.
+
+    <table>
+        <tr> <!-- Row 1 -->
+            <th></th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+        <tr> <!-- Row 2 -->
+            <th>Morning</th>
+            <td rowspan="2">Work</td>
+            <td rowspan="3">Relax</td>
+        </tr>
+        <tr> <!-- Row 3 -->
+            <th>Afternoon</th>
+        </tr>
+        <tr> <!-- Row 4 -->
+            <th>Evening</th>
+            <td>Dinner</td>
+        </tr>
+    </table>
+
+*   Long tables can be sectioned off using the table body element: <tbody>.
+
+    <table>
+        <tbody>
+            <tr>
+                <th></th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+            <tr>
+                <th>Morning</th>
+                <td rowspan="2">Work</td>
+                <td rowspan="3">Relax</td>
+            </tr>
+            <tr>
+                <th>Afternoon</th>
+            </tr>
+            <tr>
+                <th>Evening</th>
+                <td>Dinner</td>
+            </tr>
+        </tbody>
+    </table>
+
+*   It also makes sense to section off the table’s column headings using the <thead> element.
+    <thead>
+*   The bottom part of a long table can also be sectioned off using the <tfoot> element.
+    <tfoot>
+
+__________________________________________________________________________________________________
+HTML Tables Review
+
+
+*    The <table> element creates a table.
+*    The <tr> element adds rows to a table.
+*    To add data to a row, you can use the <td> element.
+*    Table headings clarify the meaning of data. Headings are added with the <th> element.
+*    Table data can span columns using the colspan attribute.
+*    Table data can span rows using the rowspan attribute.
+*    Tables can be split into three main sections: a head, a body, and a footer.
+*    A table’s head is created with the <thead> element.
+*    A table’s body is created with the <tbody> element.
+*    A table’s footer is created with the <tfoot> element.
+*    All the CSS properties you learned about in this course can be applied to tables and their data.
+
+__________________________________________________________________________________________________
+HTML FORMS
+
+*   The <form> element is a great tool for collecting information, but then we need to send that information somewhere else for processing
+    <form action="/practice.html" method="post">
+        <h1>Buy borgor</h1>
+        <p>buy one pussy</p>
+    </form>
+
+*   The first value for the type attribute we’re going to explore is "text".
+*   It’s also important that we include a name attribute for the <input> — without the name attribute,
+        information in the <input> won’t be sent when the <form> is submitted
+*   The value of the value attribute is paired with the value of the name attribute and sent as text when the form is submitted.
+
+    <form>
+        <input type="text" name="username" value="Davie">
+	</form>
+
+*   For a user to properly identify an <input> we use the appropriately named <label> element.
+
+    <form>
+		<h1>Login to start creating a burger!</h1>
+		<label for="username">Username</label>
+        <input type="text" name="username" id="username">
+    </form>
+
+*   An <input type ="password"> element will replace input text with another character like an asterisk (*) or a dot (•).
+
+    <form>
+		<h1>Login to start creating a burger!</h1>
+        <label for="username">Username:</label>
+  		<input type="text" name="username" id="username">
+        <br>
+        <label for="user-pw">Password:</label>
+		<input id="user-pw" type="password" name="user-pw">
+      </form>
+
+*   By setting type="number" for an <input> we can restrict what users type into the input
+        field to just numbers (and a few special characters like -, +, and .). 
+*   We can also provide a step attribute which creates arrows inside the input field to increase or decrease by the value of the step attribute. 
+
+    <input id="amount" type="number" step="1" name="amount">
+
+*   Another option we could use is setting type to "range" which creates a slider
+*   To set the minimum and maximum values of the slider we assign values to the min and max attribute of the <input>.
+
+    <input id="doneness" name="doneness" type="range" min="0" max="5" step="0.5">
+
+*   In a <form> we would use the <input> element and set type="checkbox". 
+    However, each <input> has a unique id to pair with a <label>.
+
+    <input id="lettuce" name="topping" type="checkbox" value="lettuce">
+	<label for="lettuce">Lettuce</label>
+
+    <input id="tomato" type="checkbox" name="topping" value="tomato">
+    <label for="tomato">Tomato</label>
+
+    <input type="checkbox" name="topping" value="cheese" id="cheese">
+    <label for="cheese">Cheese</label>
+
+*   Radio Button Input
+
+    <input id="yes" type="radio" name="cheese" value="yes">
+    <label for="yes">Yes</label>
+    <input id="no" type="radio" name="cheese" value="no">
+    <label for="no">No</label>
+
+*   Dropdown list
+
+<select name="bun" id="bun">
+            <option value="sesame">Sesame</option>
+            <option value="potato">Potato</option>
+            <option value="penus">Penus</option>
+          </select>
+        </section>
+
+*   Datalist Input
+
+<section class="sauce-selection">
+	<label for="sauce">What type of sauce would you like?</label>
+    <input type="text" list="sauces" id="sauce" name="sauce">
+	<datalist id="sauces">
+        <option>ketchup</option>
+        <option>mayo</option>
+        <option>bbq</option>
+    </datalist>
+</section>
+
+*   Textarea element
+
+    <textarea id="extra" name="extra" rows="3" cols="40">WHO?</textarea>
+
+*   Submit Form
+
+
+    <input type="submit" value="Submit">
+
+__________________________________________________________________________________________________
+HTML Forms Review
+
+*    The purpose of a <form> is to allow users to input information and send it.
+*    The <form>‘s action attribute determines where the form’s information goes.
+*    The <form>‘s method attribute determines how the information is sent and processed.
+*    To add fields for users to input information we use the <input> element and set the type attribute to a field of our choosing:
+        Setting type to "text" creates a single row field for text input.
+        Setting type to "password" creates a single row field that censors text input.
+        Setting type to "number" creates a single row field for number input.
+        Setting type to "range" creates a slider to select from a range of numbers.
+        Setting type to "checkbox" creates a single checkbox which can be paired with other checkboxes.
+        Setting type to "radio" creates a radio button that can be paired with other radio buttons.
+        Setting type to "list" will pair the <input> with a <datalist> element if the id of both are the same.
+        Setting type to "submit" creates a submit button.
+*    A <select> element is populated with <option> elements and renders a dropdown list selection.
+*    A <datalist> element is populated with <option> elements and works with an <input> to search through choices.
+*    A <textarea> element is a text input field that has a customizable area.
+*    When a <form> is submitted, the name of the fields that accept input and the value of those fields are sent as name=value pairs.
+
+__________________________________________________________________________________________________
+Form Validation
+Requiring an Input
+
+*   To enforce this rule, we can add the [required] attribute to an <input> element
+
+    <input type="number" name="guess" id="guess" required>
+
+Set a Minimum and Maximum
+
+*   Another built-in validation we can use is to assign a minimum or maximum value for a number field
+
+    <input type="number" name="guess" id="guess" min="1" max="10" required>
+
+Checking Text Length
+
+    w normal text
+    <input id="username" name="username" type="text" minlength="3" maxlength="15" required>
+    w password
+    <input id="pw" name="pw" type="password" minlength="8" maxlength="15" required>
